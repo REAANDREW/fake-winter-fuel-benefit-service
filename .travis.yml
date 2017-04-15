@@ -1,0 +1,23 @@
+language: go
+sudo: false
+go:
+    - 1.8
+branches:
+  only:
+  - master
+  - hotfix
+  - release
+  - develop
+  - /feature.*/
+before_install:
+  - make package-deps
+  - make deps
+before_script:
+script:
+  - make lint
+  - make test
+  - make build
+notifications:
+after_success:
+  - make package
+  - make upload-release

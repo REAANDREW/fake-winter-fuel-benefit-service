@@ -7,10 +7,9 @@
 - This project will be comprised of several different systems and each may be of a different programming language including **GO**, **JavaScript**, **Python**, **Java**, **Rust**, **Scala**.
 - Some of the work may include replicating legacy concerns which are present in Government and large organisations today including agent and back-office systems written in **COBOL** and still critical in the day-to-day operations.
 
-
 ## Requirements
 
-**NOTE: The following is taken (as-is) from the GOV.UK site ([https://www.gov.uk/winter-fuel-payment/overview](https://www.gov.uk/winter-fuel-payment/overview)) and has been marked up in `markdown` and published below.  These are simply a snapshot in time so the project has SOME requirements to be based on.**
+**NOTE: The following is taken (as-is) from the GOV.UK site ([https://www.gov.uk/winter-fuel-payment/overview](https://www.gov.uk/winter-fuel-payment/overview)) and has been marked up in `markdown` and published below.  These requirements will not be kept up to date with the GOV.UK requirements as they are only required as a snapshot in time so that this example project has some requirements to follow for the purposes of demonstration.  This project is in no-way affiliated with the UK Government.**
 
 [https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
 
@@ -30,7 +29,7 @@ Any money you get is tax-free and won’t affect your other benefits.
 | You qualify and get one of the benefits listed \* | 	£200 |	£300 |
 | You live with someone under 80 who also qualifies |	£100 |	£200 |
 | You live with someone 80 or over who also qualifies |	£100 |	£150 |
-| You qualify and live with your partner or civil partner and they get one of the benefits listed\*	Nil\*\*	Nil\*\* |
+| You qualify and live with your partner or civil partner and they get one of the benefits listed\* |	Nil\*\* |	Nil\*\* |
 | You qualify but live in a care home and don’t get one of the benefits listed\* |	£100 |	£150 |
 
 \* Benefits: Pension Credit, income-based Jobseeker’s Allowance (JSA), income-related Employment and Support Allowance (ESA), Income Support
@@ -66,5 +65,3 @@ You won’t qualify if throughout the week of 19 to 25 September 2016 you:
 - needed permission to enter the UK and didn’t qualify for help from the Department for Work and Pensions
 - had lived in a care home for the previous 12 weeks or more and got Pension Credit, income-based Jobseeker’s Allowance or income-related Employment and Support Allowance
 - lived in Cyprus, France, Gibraltar, Greece, Malta, Portugal or Spain
-
-
