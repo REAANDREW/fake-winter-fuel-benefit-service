@@ -10,13 +10,13 @@
 
 ## Requirements
 
-The following is taken (as-is) from the GOV.UK site (![https://www.gov.uk/winter-fuel-payment/overview](https://www.gov.uk/winter-fuel-payment/overview)) and has been marked up in `markdown` and published below.  These are simply a snapshot in time so the project has SOME requirements to be based on.
+**NOTE: The following is taken (as-is) from the GOV.UK site ([https://www.gov.uk/winter-fuel-payment/overview](https://www.gov.uk/winter-fuel-payment/overview)) and has been marked up in `markdown` and published below.  These are simply a snapshot in time so the project has SOME requirements to be based on.**
 
-![https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
+[https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
 
 > You could get between £100 and £300 tax-free to help pay your heating bills if you were born on or before 5 May 1953
 >
-> ![https://www.gov.uk/winter-fuel-payment/overview](https://www.gov.uk/winter-fuel-payment/overview)
+> [https://www.gov.uk/winter-fuel-payment/overview](https://www.gov.uk/winter-fuel-payment/overview)
 
 ### What you'll get
 
