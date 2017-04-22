@@ -27,7 +27,7 @@ LDFLAGS=-ldflags "-X main.CommitHash=${COMMIT_HASH} -X main.Version=${VERSION} -
 
 .PHONY: build
 build: deps $(SOURCES) lint test
-	CGO_ENABLED=0 go build ${LDFLAGS} -o ${BINARY} 
+	CGO_ENABLED=0 go build ${LDFLAGS} -a -installsuffix cgo -o ${BINARY} 
 
 .PHONY: deps 
 deps:
@@ -57,8 +57,11 @@ test:
 	go test -cover -coverprofile=coverage.out
 
 .PHONY: cross-platform-compile
-cross-platform-compile: package-deps
-	CGO_ENABLED=0 gox -osarch="linux/amd64" -output ${DIST_NAME_CONVENTION} ${LDFLAGS}
+cross-platform-compile: package-deps build-linux
+
+.PHONY: build-linux
+build-linux:
+	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build ${LDFLAGS} -a -installsuffix cgo -o "dist/linux_amd64_${PROJECT}"
 
 .PHONY: shasums
 shasums:
