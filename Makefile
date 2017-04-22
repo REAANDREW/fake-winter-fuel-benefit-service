@@ -69,7 +69,7 @@ package: cross-platform-compile shasums
 
 .PHONY: upload-release
 upload-release:
-	ghr -t ${GITHUB_TOKEN} -u ${USERNAME} -r ${PROJECT} --delete ${VERSION} dist/
+	@ghr -t ${GITHUB_TOKEN} -u ${USERNAME} -r ${PROJECT} --delete ${VERSION} dist/
 
 .PHONY: aws-deploy
 aws-deploy:
