@@ -6,6 +6,12 @@ BUILD_TIME=`date +%FT%T%z`
 COMMIT_HASH=`git rev-parse HEAD`
 DIST_NAME_CONVENTION="dist/{{.OS}}_{{.Arch}}_{{.Dir}}"
 
+DEPLOY_KEY_NAME="fwfbs"
+DEPOY_PUBLIC_KEY_PATH="~/.ssh/$(DEPLOY_KEY_NAME).pub"
+AWS_REGION="eu-west-1"
+#Ubuntu 14.04 LTS,amd64,hvm:ebs
+AWS_AMI="ami-a1447cc7"
+
 SOURCEDIR=.
 SOURCES := $(shell find $(SOURCEDIR) -name '*.go')
 SOURCES += VERSION
@@ -21,7 +27,7 @@ LDFLAGS=-ldflags "-X main.CommitHash=${COMMIT_HASH} -X main.Version=${VERSION} -
 
 .PHONY: build
 build: deps $(SOURCES) lint test
-	go build ${LDFLAGS} -o ${BINARY} 
+	CGO_ENABLED=0 go build ${LDFLAGS} -o ${BINARY} 
 
 .PHONY: deps 
 deps:
@@ -52,7 +58,7 @@ test:
 
 .PHONY: cross-platform-compile
 cross-platform-compile: package-deps
-	gox -osarch="linux/amd64" -output ${DIST_NAME_CONVENTION} ${LDFLAGS}
+	CGO_ENABLED=0 gox -osarch="linux/amd64" -output ${DIST_NAME_CONVENTION} ${LDFLAGS}
 
 .PHONY: shasums
 shasums:
@@ -65,3 +71,16 @@ package: cross-platform-compile shasums
 upload-release:
 	ghr -t ${GITHUB_TOKEN} -u ${USERNAME} -r ${PROJECT} --delete ${VERSION} dist/
 
+.PHONY: aws-deploy
+aws-deploy:
+	(cd deploy && terraform apply -var "key_name=$(DEPLOY_KEY_NAME)" \
+								  -var "public_key_path=$(DEPOY_PUBLIC_KEY_PATH)" \
+								  -var "aws_region=$(AWS_REGION)" \
+								  -var "aws_ami=$(AWS_AMI)")
+
+.PHONY: aws-destroy
+aws-destroy:
+	(cd deploy && terraform destroy -var "key_name=$(DEPLOY_KEY_NAME)" \
+									-var "public_key_path=$(DEPOY_PUBLIC_KEY_PATH)" \
+									-var "aws_region=$(AWS_REGION)" \
+									-var "aws_ami=$(AWS_AMI)")
