@@ -1,7 +1,9 @@
 language: go
-sudo: false
+sudo: true
 go:
     - 1.8
+services:
+    docker
 branches:
   only:
   - master
@@ -10,8 +12,6 @@ branches:
   - develop
   - /feature.*/
 before_install:
-  - sudo apt-get update
-  - sudo apt-get install -o Dpkg::Options::="--force-confold" --force-yes -y docker-engine
   - make package-deps
   - make deps
 before_script:
