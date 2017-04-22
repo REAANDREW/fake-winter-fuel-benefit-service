@@ -68,7 +68,7 @@ shasums:
 	shasum -a 256 dist/* > "dist/${PROJECT}-${VERSION}-shasums.txt"
 
 .PHONY: package
-package: cross-platform-compile shasums
+package: cross-platform-compile docker-image shasums
 
 .PHONY: upload-release
 upload-release:
@@ -87,3 +87,8 @@ aws-destroy:
 									-var "public_key_path=$(DEPOY_PUBLIC_KEY_PATH)" \
 									-var "aws_region=$(AWS_REGION)" \
 									-var "aws_ami=$(AWS_AMI)")
+
+.PHONY: docker-image
+docker-image:
+	sudo docker image build -t ${USERNAME}/${PROJECT}:${VERSION} ./
+	sudo docker save ${USERNAME}/${PROJECT}:${VERSION} | gzip > "dist/${PROJECT}_v${VERSION}.tar.gz"
