@@ -90,5 +90,5 @@ aws-destroy:
 
 .PHONY: docker-image
 docker-image:
-	sudo docker image build -t ${USERNAME}/${PROJECT}:${VERSION} ./
+	sudo docker build -t ${USERNAME}/${PROJECT}:${VERSION} ./
 	sudo docker save ${USERNAME}/${PROJECT}:${VERSION} | gzip > "dist/${PROJECT}_v${VERSION}.tar.gz"
